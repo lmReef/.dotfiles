@@ -11,7 +11,7 @@ fi
 NEW_PATH="$(pwd -P)/$(basename $1)"
 
 mv $1 .
-echo "original file moved to $NEW_PATH"
+echo "file moved to $NEW_PATH"
 
 cd "$(dirname $1)"
 ln -nfs "$NEW_PATH"

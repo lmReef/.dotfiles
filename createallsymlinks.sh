@@ -17,7 +17,7 @@ if [[ ! -d $(eval echo "~/$BASE_DIR") ]]; then
     echo ""
 fi
 
-for item in $(ls -A | grep -E '^\.'); do
+for item in $(ls -A); do
     ITEM_PATH="$BASE_DIR$item"
     # echo "--- ~/$ITEM_PATH ---"
 
