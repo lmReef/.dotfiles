@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 
 if [[ -n $1 ]]; then
-    BASE_DIR="$1"
-    cd $1
+    DIR_NAME="$1"
+    pushd $1
 else
-    BASE_DIR=""
+    DIR_NAME=""
 fi
 
 echo ""
-echo "===== processing $BASE_DIR ====="
+echo "===== processing $DIR_NAME ====="
 echo ""
 
-if [[ ! -d $(eval echo "~/$BASE_DIR") ]]; then
-    mkdir $(eval echo "~/$BASE_DIR")
-    echo "created dir ~/$BASE_DIR"
+# if dir doesnt exist in ~/ then create it
+if [[ ! -d $(eval echo "~/$DIR_NAME") ]]; then
+    mkdir $(eval echo "~/$DIR_NAME")
+    echo "created dir ~/$DIR_NAME"
     echo ""
 fi
 
 for item in $(ls -A); do
-    ITEM_PATH="$BASE_DIR$item"
+    ITEM_PATH="$DIR_NAME$item"
     # echo "--- ~/$ITEM_PATH ---"
 
     # filter
@@ -30,8 +31,8 @@ for item in $(ls -A); do
 
     if [[ -d $item ]]; then
         # dir
-        ./createallsymlinks.sh "$item/"
-        echo "==========="
+        popd
+        ./createallsymlinks.sh "$ITEM_PATH/"
     else
         # file
         if [[ -h $(eval echo "~/$ITEM_PATH") ]]; then
