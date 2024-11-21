@@ -36,8 +36,12 @@ for item in $(ls -A); do
     else
         # file
         if [[ -h $(eval echo "~/$ITEM_PATH") ]]; then
-            echo "[o] ~/$ITEM_PATH already exists"
+            read -n1 -p "[o] ~/$ITEM_PATH already exists, overwrite? (y/n): " WRITE_FILE
+            echo ""
         else
+            WRITE_FILE="y"
+        fi
+        if [[ $WRITE_FILE == [yY] ]]; then
             ABS_FILE_PATH="$(pwd -P)/$item"
             SYMLINK_PATH="~/$ITEM_PATH"
             ln -fs $ABS_FILE_PATH $(eval echo "$SYMLINK_PATH")
