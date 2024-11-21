@@ -10,12 +10,35 @@
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# tmux
-brew install tmux
+# homebrew installs
+brew install \
+git \
+gh \
+tmux \
+neovim \
+fzf \
+glow \
+zoxide \
+curl \
+gcc \
+openjdk \
+openjdk@21 \
+python \
+pipx \
+tree-sitter \
+util-linux
+
+gh auth login
+gh auth setup-git
+
+# install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# nvim
-brew install neovim
-# pushd ~/.config/nvim
-# nvim . -c PackerSync
-# popd
+# set up nvim config and installs
+mkdir ~/.config/
+pushd ~/.config/
+gh repo clone nvim-config
+mv nvim-config nvim
+# TODO: nvim . -c PackerSync
+popd
+
