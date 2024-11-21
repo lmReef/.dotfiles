@@ -23,7 +23,11 @@ for item in $(ls -A); do
     # echo "--- ~/$ITEM_PATH ---"
 
     # filter
-    if [[ $item == ".git" ]]; then
+    if [[ \
+        $item == ".git" || \
+        $item == "createallsymlinks.sh" || \
+        $item == "setupnewenv.sh"
+    ]]; then
         echo "[x] skipping $item"
         echo ""
         continue
