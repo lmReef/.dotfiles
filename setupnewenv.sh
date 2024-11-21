@@ -23,8 +23,8 @@ curl \
 gcc \
 openjdk \
 openjdk@21 \
-python \
-pipx \
+python3 \
+uv \
 tree-sitter \
 util-linux
 
