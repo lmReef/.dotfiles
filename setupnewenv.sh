@@ -26,7 +26,8 @@ openjdk@21 \
 python3 \
 uv \
 tree-sitter \
-util-linux
+util-linux \
+feh
 
 gh auth login
 gh auth setup-git
