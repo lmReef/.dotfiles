@@ -115,6 +115,8 @@ alias cat="ccat"
 alias ts="tmux-sessionizer.sh"
 alias tss="tmux-sessions-fzf.sh"
 alias tls="tmux ls"
+alias nv="nvim"
+alias nvd="nvim ."
 # windows stuff
 alias win="cd /mnt/c/Users/reefm"
 alias desktop="cd /mnt/c/Users/reefm/Desktop"
