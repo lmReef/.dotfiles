@@ -101,9 +101,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # custom PATH
-path+=('/home/lmreef/.local/bin/scripts')
-path+=('/home/lmreef/.cargo/bin')
-path+=('/home/lmreef/.local/bin')
+path+=("$HOME/.local/bin/scripts")
+path+=("$HOME/.cargo/bin")
+path+=("$HOME/.local/bin")
 export PATH
 
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
