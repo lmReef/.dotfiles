@@ -13,6 +13,9 @@
 # install omz
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# TODO: set up script for windows terminal theme
+# https://github.com/sonph/onehalf/tree/master/windowsterminal
+
 # homebrew installs
 brew install \
 git \
