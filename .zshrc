@@ -104,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 path+=("$HOME/.local/bin/scripts")
 path+=("$HOME/.cargo/bin")
 path+=("$HOME/.local/bin")
+path+=("$HOME/anaconda3/bin")
 export PATH
 
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -111,12 +112,17 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias alacrittyconfig="nvim /mnt/c/Users/reefm/AppData/Roaming/alacritty/alacritty.toml"
 alias ls="lsd -A --group-directories-first"
+alias lst="lsd -A --group-directories-first --tree"
 alias cat="ccat"
 alias ts="tmux-sessionizer.sh"
 alias tss="tmux-sessions-fzf.sh"
 alias tls="tmux ls"
 alias nv="nvim"
 alias nvd="nvim ."
+alias nf="nextflow"
+alias nfc="nf-core"
+alias nft="nf-test"
+
 # windows stuff
 alias win="cd /mnt/c/Users/reefm"
 alias desktop="cd /mnt/c/Users/reefm/Desktop"
