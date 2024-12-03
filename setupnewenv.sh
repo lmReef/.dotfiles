@@ -33,7 +33,9 @@ python3 \
 uv \
 tree-sitter \
 util-linux \
-feh
+feh \
+ripgrep \
+fd
 
 gh auth login
 gh auth setup-git
