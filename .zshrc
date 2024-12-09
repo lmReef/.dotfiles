@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
-# use tmux
-# if [[ -z "$TMUX"  ]] then
-#   if [[ -z $(pgrep tmux) ]] then
-#     tmux new-session -s "main"
-#   else
-#     tmux a
-#   fi
-# fi
-
 if [[ -z "$TMUX" ]]; then
   tmux new -A -s "main"
 elif [[ -z "$TERM_PROGRAM" ]]; then
@@ -53,7 +44,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 1
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -65,7 +56,7 @@ zstyle ':omz:update' frequency 13
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -105,7 +96,10 @@ path+=("$HOME/.local/bin/scripts")
 path+=("$HOME/.cargo/bin")
 path+=("$HOME/.local/bin")
 path+=("$HOME/anaconda3/bin")
+path+=("$HOME/.jenv/bin")
 export PATH
+
+export NVIM_CONFIG="$HOME/.config/nvim/"
 
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 alias zshconfig="nvim ~/.zshrc"
@@ -148,6 +142,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd cd)"
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
+eval "$(jenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
