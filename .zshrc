@@ -3,7 +3,12 @@
 if [[ -z "$TMUX" ]]; then
   tmux new -A -s "main"
 elif [[ -z "$TERM_PROGRAM" ]]; then
-  tmux a
+  # TODO: get this working
+  if [[ -z "$HOME/.local/bin/scripts/tmux-sessions-fzf.sh" ]]; then
+    "$HOME/.local/bin/scripts/tmux-sessions-fzf.sh"
+  else
+    tmux a
+  fi
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
