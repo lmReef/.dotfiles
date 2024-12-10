@@ -37,6 +37,12 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 #
 
+# blinking cursor
+_fix_cursor() {
+   echo -ne '\e[1 q'
+}
+precmd_functions+=(_fix_cursor)
+
 # custom PATH
 path+=("$HOME/.local/bin/scripts")
 path+=("$HOME/.cargo/bin")
