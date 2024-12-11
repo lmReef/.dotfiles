@@ -35,7 +35,10 @@ tree-sitter \
 util-linux \
 feh \
 ripgrep \
-fd
+fd \
+btop \
+tldr \
+bat
 
 gh auth login
 gh auth setup-git
