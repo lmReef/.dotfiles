@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# auto tmux
 if [[ -z "$TMUX" ]]; then
   tmux new -A -s "main"
 elif [[ -z "$TERM_PROGRAM" ]]; then
@@ -18,24 +19,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
+COMPLETION_WAITING_DOTS="true"
 
+export ZSH="$HOME/.oh-my-zsh"
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 1
 
-COMPLETION_WAITING_DOTS="true"
-
-plugins=(git aliases colored-man-pages colorize)
+# omz plugins
+plugins=(git aliases colored-man-pages colorize direnv)
 
 source $ZSH/oh-my-zsh.sh
-
-
-#
-# User configuration
-#
 
 # blinking cursor
 _fix_cursor() {
@@ -87,11 +81,17 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd cd)"
-# Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 eval "$(jenv init -)"
+eval "$(direnv hook zsh)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# load zsh tab completion
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+
+# load asdf
+. /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh

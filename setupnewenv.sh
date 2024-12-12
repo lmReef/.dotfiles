@@ -38,7 +38,10 @@ ripgrep \
 fd \
 btop \
 tldr \
-bat
+bat \
+asdf \
+direnv \
+jq
 
 gh auth login
 gh auth setup-git
