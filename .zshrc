@@ -83,7 +83,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(fzf --zsh)"
 eval "$(jenv init -)"
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
+eval "$(mise activate zsh)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -92,6 +93,3 @@ export NVM_DIR="$HOME/.nvm"
 # load zsh tab completion
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
-
-# load asdf
-. /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh

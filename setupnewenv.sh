@@ -29,8 +29,6 @@ curl \
 gcc \
 openjdk \
 openjdk@21 \
-python3 \
-uv \
 tree-sitter \
 util-linux \
 feh \
@@ -39,9 +37,8 @@ fd \
 btop \
 tldr \
 bat \
-asdf \
-direnv \
-jq
+jq \
+mise
 
 gh auth login
 gh auth setup-git
