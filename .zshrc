@@ -83,7 +83,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(fzf --zsh)"
 eval "$(jenv init -)"
-# eval "$(direnv hook zsh)"
 eval "$(mise activate zsh)"
 
 export NVM_DIR="$HOME/.nvm"

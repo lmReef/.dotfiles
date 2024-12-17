@@ -8,10 +8,14 @@
 ./createallsymlinks.sh
 
 # install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [[ -z "$(brew -v | grep 'Homebrew')" ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 # install omz
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [[ -z "$ZSH" ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
 # TODO: set up script for windows terminal theme
 # https://github.com/sonph/onehalf/tree/master/windowsterminal
@@ -40,17 +44,32 @@ bat \
 jq \
 mise
 
-gh auth login
-gh auth setup-git
+if [[ -z "$(gh auth status | grep 'Logged in')" ]]; then
+    gh auth login
+    gh auth setup-git
+fi
 
 # install tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [[ ! -d "~/.tmux/plugins/tpm" ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # set up nvim config and installs
-mkdir ~/.config/
-pushd ~/.config/
-gh repo clone nvim-config
-mv nvim-config nvim
-# TODO: nvim . -c PackerSync
-popd
+if [[ ! -d "~/.config/nvim/" ]]; then
+    mkdir ~/.config/
+    pushd ~/.config/
+    gh repo clone nvim-config
+    mv nvim-config nvim
+    # TODO: nvim . -c PackerSync
+    popd
+fi
 
+# set up mise
+mise use python
+mise use java java@21
+
+mise p i poetry
+mise use poetry
+
+mise set -g MISE_ENV_FILE=.env
+mise set -g MISE_POETRY_VENV_AUTO=1
