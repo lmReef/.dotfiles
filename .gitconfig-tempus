@@ -1,0 +1,6 @@
+[user]
+	email = Reef.Matson@Tempus.com
+	name = Reef M
+
+[core]
+	excludesFile = ~/.gitignore
