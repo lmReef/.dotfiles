@@ -87,9 +87,9 @@ if [[ -z "$MISE_ENV_FILE" ]]; then
 
     mise p i poetry
     mise use -g poetry
-
     mise set -g MISE_ENV_FILE=.env
     mise set -g MISE_POETRY_VENV_AUTO=1
+    poetry config virtualenvs.in-project true
 else
     echo "\nMise already set up.\n"
 fi
