@@ -39,8 +39,8 @@ precmd_functions+=(_fix_cursor)
 
 # custom PATH
 path+=("$HOME/.local/bin/scripts")
-# path+=("$HOME/.cargo/bin")
 path+=("$HOME/.local/bin")
+path+=("$HOME/.cargo/bin")
 # path+=("$HOME/anaconda3/bin")
 export PATH
 
