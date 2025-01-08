@@ -27,7 +27,7 @@ zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 1
 
 # omz plugins
-plugins=(git aliases colored-man-pages colorize)
+plugins=(colored-man-pages colorize)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,10 +83,11 @@ eval "$(zoxide init zsh --cmd cd)"
 eval "$(fzf --zsh)"
 eval "$(mise activate zsh)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # load zsh tab completion
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
+
+export BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
+
+# To customize prompt, run `p10k configure` or edit ~/.dotfiles/.p10k.zsh.
+[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
