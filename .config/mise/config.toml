@@ -1,0 +1,9 @@
+[tools]
+poetry = "latest"
+python = "latest"
+
+[settings]
+
+[env]
+MISE_POETRY_VENV_AUTO = "1"
+MISE_ENV_FILE = ".env"
