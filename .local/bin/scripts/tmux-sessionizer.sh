@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 switch_to() {
     if [[ -z $TMUX ]]; then
         tmux attach-session -t $1
@@ -12,18 +13,12 @@ has_session() {
 }
 
 hydrate() {
-    if [ -f $2/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $2/.tmux-sessionizer" c-M
-    elif [ -f $HOME/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $HOME/.tmux-sessionizer" c-M
-    fi
+    tmux send-keys -t $1 "source $HOME/.config/tmux-hydrate.sh $1 $2" c-M
 }
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # If someone wants to make this extensible, i'll accept
-    # PR
     selected=$(find ~/ ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
