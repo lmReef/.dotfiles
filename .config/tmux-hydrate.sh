@@ -9,8 +9,8 @@ tmux send-keys -t cli "clear && ls" c-M
 tmux new-window -dn long
 tmux send-keys -t long "clear && ls" c-M
 
-nvim .
-
 if [ -f "$session_dir/.tmux-hydrate.sh" ]; then
     source "$session_dir/.tmux-hydrate.sh"
 fi
+
+nvim .

@@ -2,9 +2,9 @@
 
 switch_to() {
     if [[ -z $TMUX ]]; then
-        tmux attach-session -t $1
+        tmux attach-session -t "$1"
     else
-        tmux switch-client -t $1
+        tmux switch-client -t "$1"
     fi
 }
 
@@ -13,13 +13,13 @@ has_session() {
 }
 
 hydrate() {
-    tmux send-keys -t $1 "source $HOME/.config/tmux-hydrate.sh $1 $2" c-M
+    tmux send-keys -t "$1" "source $HOME/.config/tmux-hydrate.sh $1 $2" c-M
 }
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/projects ~/projects/tempus/ "$(cat "$HOME/.config/ts-projects-list.txt")" -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/ ~/.config ~/.local/bin ~/projects ~/projects/tempus mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -30,14 +30,14 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    hydrate $selected_name $selected
+    tmux new-session -s "$selected_name" -c "$selected"
+    hydrate "$selected_name" "$selected"
     exit 0
 fi
 
-if ! has_session $selected_name; then
-    tmux new-session -ds $selected_name -c $selected
-    hydrate $selected_name $selected
+if ! has_session "$selected_name"; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+    hydrate "$selected_name" "$selected"
 fi
 
-switch_to $selected_name
+switch_to "$selected_name"
