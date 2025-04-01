@@ -91,3 +91,12 @@ export BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/.p10k.zsh.
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
+
+# tempus-developer: RC
+if [ -f "/home/reef/.zshrc.tempus" ]; then
+    . "/home/reef/.zshrc.tempus"
+else
+    echo "ERROR: The Tempus shell file (/home/reef/.zshrc.tempus) is missing!"
+    echo "Please re-run https://github.com/tempuslabs/tempus-developer/blob/main/RUN-ONCE.sh"
+fi
+
