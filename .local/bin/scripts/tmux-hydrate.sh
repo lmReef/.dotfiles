@@ -9,8 +9,17 @@ tmux send-keys -t cli "clear && ls" c-M
 tmux new-window -dn long
 tmux send-keys -t long "clear && ls" c-M
 
-nvim .
+# handle web projects
+if ls | grep -q package.json; then
+    if ! ls | grep -q node_modules; then
+        tmux send-keys -t long "npm i; npm run dev" c-M
+    else
+        tmux send-keys -t long "npm run dev" c-M
+    fi
+fi
 
 if [ -f "$session_dir/.tmux-hydrate.sh" ]; then
     source "$session_dir/.tmux-hydrate.sh"
 fi
+
+nvim .
