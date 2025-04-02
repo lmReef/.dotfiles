@@ -50,6 +50,7 @@ alias nvd="nvim ."
 alias nf="nextflow"
 alias nfc="nf-core"
 alias nft="nf-test"
+alias h="help.sh"
 
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
 
