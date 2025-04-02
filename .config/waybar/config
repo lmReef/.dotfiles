@@ -89,11 +89,11 @@
         "on-click": "[[ -z $(pgrep pavucontrol) ]] && pavucontrol -t 1 || kill $(pgrep pavucontrol)"
     },
     "custom/spotify": {
-        "format": "  {}",
+        "format": "{}",
         "max-length": 40,
         "interval": 1, // Remove this if your script is endless and write in loop
         "exec": "sh $HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
-        "exec-if": "pgrep spot"
+        "exec-if": "playerctl status | grep -qE 'Playing|Paused'"
     },
     "custom/bar": {
         "format": " | "
