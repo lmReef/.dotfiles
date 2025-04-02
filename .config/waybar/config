@@ -90,7 +90,7 @@
     },
     "custom/spotify": {
         "format": "{}",
-        "max-length": 40,
+        "max-length": 100,
         "interval": 1, // Remove this if your script is endless and write in loop
         "exec": "sh $HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
         "exec-if": "playerctl status | grep -qE 'Playing|Paused'"
