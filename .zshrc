@@ -1,23 +1,6 @@
 #!/usr/bin/env bash
 
-# auto tmux
-if [[ -z "$TMUX" ]]; then
-  tmux new -A -s "main"
-elif [[ -z "$TERM_PROGRAM" ]]; then
-  # TODO: get this working
-  if [[ -z "$HOME/.local/bin/scripts/tmux-sessions-fzf.sh" ]]; then
-    "$HOME/.local/bin/scripts/tmux-sessions-fzf.sh"
-  else
-    tmux a
-  fi
-fi
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+setopt HIST_IGNORE_SPACE
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 COMPLETION_WAITING_DOTS="true"
@@ -27,29 +10,33 @@ zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 1
 
 # omz plugins
-plugins=(colored-man-pages colorize)
+plugins=(colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
 # blinking cursor
 _fix_cursor() {
-  echo -ne '\e[1 q'
+    echo -ne '\e[1 q'
 }
 precmd_functions+=(_fix_cursor)
 
 # custom PATH
 path+=("$HOME/.local/bin/scripts")
-path+=("$HOME/.cargo/bin")
 path+=("$HOME/.local/bin")
-path+=("$HOME/anaconda3/bin")
+path+=("$HOME/.cargo/bin")
+# path+=("$HOME/anaconda3/bin")
 export PATH
 
 export NVIM_CONFIG="$HOME/.config/nvim/"
+export VISUAL="nvim"
+export EDITOR="nvim"
+export WINE="/usr/bin/wine"
+export WINETRICKS="/usr/bin/winetricks"
 
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias alacrittyconfig="nvim /mnt/c/Users/reefm/AppData/Roaming/alacritty/alacritty.toml"
+alias hyprlandconfig="nvim ~/.config/hypr/hyprland.conf"
 alias ls="lsd -A --group-directories-first"
 alias lst="lsd -A --group-directories-first --tree"
 alias c="clear"
@@ -63,6 +50,7 @@ alias nvd="nvim ."
 alias nf="nextflow"
 alias nfc="nf-core"
 alias nft="nf-test"
+alias h="help.sh"
 
 # windows stuff
 alias win="cd /mnt/c/Users/reefm"
@@ -94,8 +82,8 @@ export dl_dir='/mnt/c/Users/reef.matson/Downloads'
 
 # tempus-developer: RC
 if [ -f "/home/reef/.zshrc.tempus" ]; then
-  . "/home/reef/.zshrc.tempus"
+    . "/home/reef/.zshrc.tempus"
 else
-  echo "ERROR: The Tempus shell file (/home/reef/.zshrc.tempus) is missing!"
-  echo "Please re-run https://github.com/tempuslabs/tempus-developer/blob/main/RUN-ONCE.sh"
+    echo "ERROR: The Tempus shell file (/home/reef/.zshrc.tempus) is missing!"
+    echo "Please re-run https://github.com/tempuslabs/tempus-developer/blob/main/RUN-ONCE.sh"
 fi

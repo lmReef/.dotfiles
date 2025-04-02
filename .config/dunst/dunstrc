@@ -1,0 +1,7 @@
+[global]
+frame_width = 1
+corner_radius = 6
+offset = (5, 35)
+
+font = "Ubuntu Nerd" 11
+icon_theme = "breeze"
