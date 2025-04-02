@@ -1,0 +1,88 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Ubuntu Mono Nerd Font";
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+window#waybar {
+  background: var(--color0);
+  color: var(--color15);
+  border-radius: 0 0 6px 6px;
+}
+
+/* tooltip { } */
+/* tooltip label { } */
+
+#workspaces button {
+  padding: 0;
+  background: transparent;
+  color: var(--color15);
+  border-top: 2px solid transparent;
+  min-width: 24px;
+}
+
+#workspaces button.active {
+  color: var(--color3);
+  border-top: 2px solid var(--color3);
+}
+
+#mode {
+  background: var(--color1);
+  border-bottom: 3px solid var(--color15);
+}
+
+.module,
+#workspaces button {
+  padding: 0 6px;
+  margin: 0 2px;
+}
+
+#clock {
+  font-size: 16px;
+}
+
+@keyframes blink {
+  to {
+    background-color: var(--color15);
+    color: var(--color0);
+  }
+}
+
+#battery.warning:not(.charging) {
+  color: var(--color15);
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+#network {
+}
+
+#network.disconnected {
+  color: var(--color6);
+  border-top: 1px solid var(--color6);
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#custom-spotify {
+  /* color: rgb(102, 220, 105); */
+  color: var(--color6);
+}
+
+#tray {
+}
