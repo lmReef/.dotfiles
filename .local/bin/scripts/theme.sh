@@ -5,8 +5,6 @@ else
     wallpaper="$(ls "$HOME"/Pictures/wallpapers/ | grep "$1" | shuf -n 1)"
 fi
 
-echo "$wallpaper"
-
 if [[ -n $(echo "$wallpaper" | grep "/") ]]; then
     wal -i "$wallpaper" >/dev/null
 else
@@ -16,10 +14,10 @@ wallpaper=$(jq .wallpaper "$HOME"/.cache/wal/colors.json)
 
 # copy of the current wallpaper for lockscreen to use
 # TODO: figure out how to reference the active wallpaper correctly without copying. ln?
-if [[ -f $HOME/.config/hypr/current_wallpaper.* ]]; then
-    rm "$HOME"/.config/hypr/current_wallpaper.*
-fi
-cp -lf "$(echo "$wallpaper" | tr -d '"')" "$HOME/.config/hypr/current_wallpaper.$(echo "$wallpaper" | tr -d '"' | sed 's/.*\.//g')"
+# if [[ -f $HOME/.config/hypr/current_wallpaper.* ]]; then
+#     rm "$HOME"/.config/hypr/current_wallpaper.*
+# fi
+# cp -lf "$(echo "$wallpaper" | tr -d '"')" "$HOME/.config/hypr/current_wallpaper.$(echo "$wallpaper" | tr -d '"' | sed 's/.*\.//g')"
 
 echo "preload = $wallpaper" | tr -d '"' | cat >"$HOME"/.config/hypr/hyprpaper.conf
 echo "wallpaper = , $wallpaper" | tr -d '"' | cat >>"$HOME"/.config/hypr/hyprpaper.conf
@@ -39,4 +37,4 @@ for color in $(cat "$wal_vars"); do
 done
 [[ -n "$(pgrep waybar)" ]] && killall -SIGUSR2 waybar &>/dev/null # refresh waybar config
 
-echo "Wallpaper set: $wallpaper"
+echo "Wallpaper set: $(basename $wallpaper)"
