@@ -25,6 +25,10 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
+;; window management
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
+(setq confirm-kill-emacs nil)
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -38,6 +42,7 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+;; Nextflow stuff
 (use-package! nextflow-mode
   :mode "\\.nf\\'"
   :hook (nextflow-mode . lsp))
