@@ -4,12 +4,14 @@
 ;; To install a package with Doom you must declare them here and run 'doom sync'
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 
-
-;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-;; (package! some-package)
-(package! cl-lib)
+;; lang
+;; (package! cl-lib)
+(package! dash)
 (package! groovy-mode)
 (package! nextflow-mode :recipe (:host github :repo "emiller88/nextflow-mode"))
+
+(package! scad-mode)
+
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
