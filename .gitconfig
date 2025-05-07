@@ -1,8 +1,6 @@
 [credential "https://github.com"]
-	helper = 
 	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
 	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
 [user]
 	email = ReefMatson@proton.me
@@ -20,6 +18,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-
+[pull]
+	ff = only
 [includeIf "gitdir:~/projects/tempus/**"]
 	path = ~/.gitconfig-tempus
