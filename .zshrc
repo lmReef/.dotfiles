@@ -40,7 +40,7 @@ alias nvd="nvim ."
 alias h="help.sh"
 
 # setup
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew zsh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(fzf --zsh)"
 eval "$(mise activate zsh)"
