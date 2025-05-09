@@ -63,6 +63,8 @@ eval "$(zoxide init zsh --cmd cd)"
 eval "$(fzf --zsh)"
 eval "$(mise activate zsh)"
 
+wal -qi "$HOME/Pictures/wallpaper.jpg"
+
 # load zsh tab completion
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
