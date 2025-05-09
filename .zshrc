@@ -7,6 +7,24 @@ SAVEHIST=10000
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_SPACE
 
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*' force-list always
+
 # custom PATH
 path+=("$HOME/.local/bin/scripts")
 path+=("$HOME/.local/bin")
