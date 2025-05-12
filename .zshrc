@@ -41,6 +41,10 @@ export WINE="/usr/bin/wine"
 export WINETRICKS="/usr/bin/winetricks"
 export dl_dir='/mnt/c/Users/reef.matson/Downloads'
 
+bindkey "^H" backward-delete-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 # aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
