@@ -24,6 +24,7 @@ precmd_functions+=(_fix_cursor)
 path+=("$HOME/.local/bin/scripts")
 path+=("$HOME/.local/bin")
 path+=("$HOME/.cargo/bin")
+path+=("$HOME/.config/emacs/bin")
 # path+=("$HOME/anaconda3/bin")
 export PATH
 
@@ -37,8 +38,8 @@ export WINETRICKS="/usr/bin/winetricks"
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias hyprlandconfig="nvim ~/.config/hypr/hyprland.conf"
-alias ls="lsd"
-alias lst="lsd --tree -I .git -I .github -I .venv -I .nextflow -I .nf_test -I .pycache -I .pytest"
+alias ls="lsd -A"
+alias lst="lsd -A --tree -I .git -I .github -I .venv -I .nextflow -I .nf_test -I .pycache -I .pytest"
 alias c="clear"
 alias cls="clear && ls"
 alias cat="bat -p"
