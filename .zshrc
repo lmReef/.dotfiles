@@ -25,6 +25,10 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*' force-list always
 
+if [ -f "$HOME/.antigenrc" ]; then
+    source "$HOME/.antigenrc"
+fi
+
 # custom PATH
 path+=("$HOME/.local/bin/scripts")
 path+=("$HOME/.local/bin")

@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+source /usr/share/zsh-antigen/antigen.zsh
+
+antigen bundle zsh-users/zsh-autosuggestions
+bindkey '^ ' autosuggest-accept
+
+antigen apply
