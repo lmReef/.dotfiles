@@ -45,6 +45,16 @@ export WINE="/usr/bin/wine"
 export WINETRICKS="/usr/bin/winetricks"
 export dl_dir='/mnt/c/Users/reef.matson/Downloads'
 
+export FZF_DEFAULT_OPTS=""
+export FZF_CTRL_T_OPTS="
+    --walker-skip .git,node_modules,target
+    --preview 'bat -n --color=always {}'
+    --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_ALT_C_OPTS="
+    --walker-skip .git,node_modules,target
+    --preview 'tree -C {}'"
+
+bindkey "^G" fzf-cd-widget
 bindkey "^H" backward-delete-word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
