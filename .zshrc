@@ -7,6 +7,10 @@ SAVEHIST=10000
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_SPACE
 
+# load zsh tab completion
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:messages' format '%d'
@@ -24,10 +28,6 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*' force-list always
-
-if [ -f "$HOME/.antigenrc" ]; then
-    source "$HOME/.antigenrc"
-fi
 
 # custom PATH
 path+=("$HOME/.local/bin/scripts")
@@ -76,13 +76,14 @@ eval "$(mise activate zsh)"
 
 wal -qi "$HOME/Pictures/wallpaper.jpg"
 
-# load zsh tab completion
-fpath+=~/.zfunc
-autoload -Uz compinit && compinit
-
 # custom prompt
 source ~/.dotfiles/.local/bin/scripts/shell_prompt.sh
 precmd_functions+=(update_prompt)
+
+if [ -f "$HOME/.antigenrc" ]; then
+    source "$HOME/.antigenrc"
+fi
+
 
 # tempus-developer: RC
 if [ -f "/home/reef.matson/.zshrc.tempus" ]; then
