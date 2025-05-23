@@ -6,7 +6,6 @@ antigen bundle "zsh-users/zsh-completions"
 antigen bundle "zsh-users/zsh-autosuggestions"
 bindkey '^ ' autosuggest-accept
 
-
 antigen bundle "chrissicool/zsh-256color"
 antigen bundle "ael-code/zsh-colored-man-pages"
 antigen bundle "zpm-zsh/colors"
@@ -14,16 +13,5 @@ antigen bundle "zpm-zsh/colorize"
 
 antigen bundle "MichaelAquilina/zsh-autoswitch-virtualenv"
 antigen bundle "MichaelAquilina/zsh-you-should-use"
-
-#
-# requires manual build in ~/.antigen/bundles/
-#
-
-# generate completions from --help
-antigen bundle "dim-an/cod"
-if [ ! -f ~/.antigen/bundles/dim-an/cod/cod ]; then
-    go build ~/.antigen/bundles/dim-an/cod/
-fi
-source <(~/.antigen/bundles/dim-an/cod/cod init $$ bash)
 
 antigen apply
