@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "hyprland/submap", "custom/spotify", "gamemode"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/bar", "pulseaudio", "network"],
+    "modules-right": ["tray", "custom/bar", "custom/swapaudio", "pulseaudio", "network"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -88,10 +88,14 @@
         "format": "{}",
         "max-length": 100,
         "interval": 1, // Remove this if your script is endless and write in loop
-        "exec": "sh $HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
+        "exec": "bash $HOME/.config/waybar/mediaplayer.sh 2>/dev/null", // Script in resources folder
         "exec-if": "playerctl status | grep -qE 'Playing|Paused'"
     },
     "custom/bar": {
         "format": " | "
+    },
+    "custom/swapaudio": {
+        "format": "󰣁",
+        "on-click": "bash $HOME/.config/waybar/toggle_audio_device.sh 2>/dev/null"
     }
 }
