@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "hyprland/submap", "custom/spotify", "gamemode"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "custom/bar", "pulseaudio", "network"],
+    "modules-right": ["tray", "custom/bar", "pulseaudio", "network", "battery"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
