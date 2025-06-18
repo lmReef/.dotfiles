@@ -1,0 +1,4 @@
+[settings]
+
+[env]
+MISE_ENV_FILE = ".env"

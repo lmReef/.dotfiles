@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+source /usr/share/zsh-antigen/antigen.zsh
+
+antigen bundle "zsh-users/zsh-completions"
+antigen bundle "zsh-users/zsh-autosuggestions"
+bindkey '^ ' autosuggest-accept
+
+antigen bundle "chrissicool/zsh-256color"
+antigen bundle "ael-code/zsh-colored-man-pages"
+antigen bundle "zpm-zsh/colors"
+antigen bundle "zpm-zsh/colorize"
+
+antigen bundle "MichaelAquilina/zsh-autoswitch-virtualenv"
+antigen bundle "MichaelAquilina/zsh-you-should-use"
+
+antigen apply

@@ -1,45 +1,74 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
+# zsh config
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=10000
+setopt SHARE_HISTORY
 setopt HIST_IGNORE_SPACE
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-COMPLETION_WAITING_DOTS="true"
+# load zsh tab completion
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
 
-export ZSH="$HOME/.oh-my-zsh"
-zstyle ':omz:update' mode auto
-zstyle ':omz:update' frequency 1
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
 
-# omz plugins
-plugins=(colored-man-pages)
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 
-source $ZSH/oh-my-zsh.sh
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-# blinking cursor
-_fix_cursor() {
-   echo -ne '\e[1 q'
-}
-precmd_functions+=(_fix_cursor)
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*' force-list always
 
 # custom PATH
 path+=("$HOME/.local/bin/scripts")
 path+=("$HOME/.local/bin")
 path+=("$HOME/.cargo/bin")
 path+=("$HOME/.config/emacs/bin")
-# path+=("$HOME/anaconda3/bin")
 export PATH
 
+# env
 export NVIM_CONFIG="$HOME/.config/nvim/"
 export VISUAL="nvim"
 export EDITOR="nvim"
 export WINE="/usr/bin/wine"
 export WINETRICKS="/usr/bin/winetricks"
 
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+export FZF_DEFAULT_OPTS=""
+export FZF_CTRL_T_OPTS="
+    --walker-skip .git,node_modules,target
+    --preview 'bat -n --color=always {}'
+    --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_ALT_C_OPTS="
+    --walker-skip .git,node_modules,target
+    --preview 'tree -C {}'"
+
+bindkey "^G" fzf-cd-widget
+bindkey "^H" backward-delete-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias hyprlandconfig="nvim ~/.config/hypr/hyprland.conf"
 alias ls="lsd -A"
 alias lst="lsd -A --tree -I .git -I .github -I .venv -I .nextflow -I .nf_test -I .pycache -I .pytest"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias c="clear"
 alias cls="clear && ls"
 alias cat="bat -p"
@@ -56,14 +85,16 @@ alias nft="nf-test"
 alias h="help.sh"
 alias get_esp="source /opt/esp-idf/export.sh"
 
-[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
-
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(fzf --zsh)"
 eval "$(mise activate zsh)"
 
-# load zsh tab completion
-fpath+=~/.zfunc
-autoload -Uz compinit && compinit
+# custom prompt
+source ~/.dotfiles/.local/bin/scripts/shell_prompt.sh
+precmd_functions+=(update_prompt)
+
+if [[ -f "$HOME/.antigenrc" ]]; then
+    source "$HOME/.antigenrc"
+fi
 
 neofetch

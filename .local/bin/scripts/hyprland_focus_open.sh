@@ -1,5 +1,5 @@
-class_exists="$(hyprctl --instance 0 clients | grep "class: $1")"
-title_exists="$(hyprctl --instance 0 clients | grep "title: $1")"
+class_exists="$(hyprctl --instance 0 clients | grep -i "class: $1")"
+title_exists="$(hyprctl --instance 0 clients | grep -i "title: $1")"
 
 # echo "$class_exists"
 # echo "$title_exists"
