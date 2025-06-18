@@ -67,4 +67,3 @@ fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 
 neofetch
-ls
