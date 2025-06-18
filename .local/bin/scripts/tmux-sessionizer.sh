@@ -19,7 +19,7 @@ hydrate() {
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd -HL -td -d1 . "$HOME/" "$HOME/projects" "$HOME/.config" "$HOME/.local/bin" "$ADDITIONAL_PROJECTS" | fzf)
+    selected=$(fd -HL -td -d1 . "$HOME/" "$HOME/projects" "$HOME/.config" "$HOME/.local/bin" "$([[ -n "$ADDITIONAL_PROJECTS" ]] && "$ADDITIONAL_PROJECTS" || echo " ")" | fzf)
 fi
 
 if [[ -z $selected ]]; then
