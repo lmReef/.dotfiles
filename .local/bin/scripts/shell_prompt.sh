@@ -19,5 +19,7 @@ update_prompt() {
         git_stuff
     fi
 
+    line="$(whoami)@$(hostnamectl hostname) $line"
+
     PS1="$line > "
 }
