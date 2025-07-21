@@ -1,29 +1,22 @@
-# TODO: implement -i with fzf
-if [[ -z $1 || -z $(ls "$HOME"/Pictures/wallpapers/ | grep "$1") ]]; then
-    wallpaper=$HOME/Pictures/wallpapers/
+#!/bin/zsh
+
+if [[ -z "$1" ]]; then
+    wallpaper="$HOME/Pictures/wallpapers"
+elif [[ -f "$1" ]]; then
+    wallpaper="$1"
 else
-    wallpaper="$(ls "$HOME"/Pictures/wallpapers/ | grep "$1" | shuf -n 1)"
+    wallpaper="$(fd "$1" "$HOME/Pictures/wallpapers/" | shuf -n 1)"
 fi
 
-if [[ -n $(echo "$wallpaper" | grep "/") ]]; then
-    wal -i "$wallpaper" >/dev/null
-else
-    wal -i "$HOME/Pictures/wallpapers/$wallpaper" >/dev/null
+wal -i "$wallpaper"
+wallpaper="$(cat "$HOME/.cache/wal/wal")"
+
+# hyprpaper
+if [[ -z "$(pgrep hyprpaper)" ]]; then
+    hyprctl --instance 0 dispatch exec hyprpaper
 fi
-wallpaper=$(jq .wallpaper "$HOME"/.cache/wal/colors.json)
-
-# copy of the current wallpaper for lockscreen to use
-# TODO: figure out how to reference the active wallpaper correctly without copying. ln?
-# if [[ -f $HOME/.config/hypr/current_wallpaper.* ]]; then
-#     rm "$HOME"/.config/hypr/current_wallpaper.*
-# fi
-# cp -lf "$(echo "$wallpaper" | tr -d '"')" "$HOME/.config/hypr/current_wallpaper.$(echo "$wallpaper" | tr -d '"' | sed 's/.*\.//g')"
-
-echo "preload = $wallpaper" | tr -d '"' | cat >"$HOME"/.config/hypr/hyprpaper.conf
-echo "wallpaper = , $wallpaper" | tr -d '"' | cat >>"$HOME"/.config/hypr/hyprpaper.conf
-
-hyprctl hyprpaper preload "$(echo "$wallpaper" | tr -d '"')" >/dev/null
-hyprctl hyprpaper wallpaper ",$(echo "$wallpaper" | tr -d '"')" >/dev/null
+# echo -e "preload = $wallpaper\nwallpaper = , $wallpaper" | tr -d '"' | cat >"$HOME/.config/hypr/hyprpaper.conf"
+hyprctl --instance 0 hyprpaper reload ",$(echo "$wallpaper" | tr -d '"')" >/dev/null
 
 # create waybar style.css from template
 waybar_stylesheet="$HOME/.config/waybar/style.css"
