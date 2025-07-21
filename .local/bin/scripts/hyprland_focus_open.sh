@@ -1,13 +1,5 @@
-class_exists="$(hyprctl --instance 0 clients | grep -i "class: $1")"
-title_exists="$(hyprctl --instance 0 clients | grep -i "title: $1")"
+selector="$(hyprctl --instance 0 clients | grep -E "\s+\w+: $1" -m1 | sed -E "s/\s+(\w+): .+/\1/")"
 
-# echo "$class_exists"
-# echo "$title_exists"
-
-if [ -n "$class_exists" ]; then
-    hyprctl --instance 0 dispatch focuswindow class:$1
-elif [ -n "$title_exists" ]; then
-    hyprctl --instance 0 dispatch focuswindow title:$1
-else
-    $1
+if [ "$selector" != "" ]; then
+    hyprctl --instance 0 dispatch focuswindow "$selector:$1"
 fi
