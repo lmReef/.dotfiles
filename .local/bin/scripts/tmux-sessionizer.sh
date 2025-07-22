@@ -13,13 +13,13 @@ has_session() {
 }
 
 hydrate() {
-    tmux send-keys -t $1 "source $HOME/.local/bin/scripts/tmux-hydrate.sh $1 $2" c-M
+    tmux send-keys -t "$1" "source $HOME/.local/bin/scripts/tmux-hydrate.sh $1 $2" c-M
 }
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd -HL -td -d1 . "$HOME/" "$HOME/projects" "$HOME/.config" "$HOME/.local/bin" "$ADDITIONAL_PROJECTS" | fzf)
+    selected=$(fd -HL -td -d1 . "$HOME/" "$HOME/projects" "$HOME/.config" "$HOME/.local/bin" $ADDITIONAL_PROJECTS | fzf)
 fi
 
 if [[ -z $selected ]]; then
