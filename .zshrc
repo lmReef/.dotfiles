@@ -78,6 +78,9 @@ alias tls="tmux ls"
 alias nv="nvim"
 alias nvd="nvim ."
 alias h="help.sh"
+alias gls="gcloud storage ls"
+alias gcat="gcloud storage cat"
+alias po="poetry"
 
 # setup
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
