@@ -24,3 +24,5 @@
 	ff = only
 [includeIf "gitdir:~/projects/tempus/**"]
 	path = ~/.gitconfig-tempus
+[includeIf "gitdir:~/projects/netvalue/**"]
+	path = ~/.gitconfig-netvalue

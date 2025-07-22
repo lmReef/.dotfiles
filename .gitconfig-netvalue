@@ -1,5 +1,5 @@
 [user]
-	email = reef.matson@tempus.com
+	email = reef.matson@netvalue.nz
 	name = ReefM
 [core]
 	excludesFile = ~/.gitignore
