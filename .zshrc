@@ -56,6 +56,7 @@ export FZF_ALT_C_OPTS="
 
 bindkey "^G" fzf-cd-widget
 bindkey "^H" backward-delete-word
+bindkey "^B" beginning-of-line
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
