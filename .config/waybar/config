@@ -1,10 +1,11 @@
 {
+    "reload_style_on_change": true,
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar at the bottom of your screen
     "height": 30, // Waybar height
     // "width": 1366, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "hyprland/submap", "custom/spotify", "gamemode"],
+    "modules-left": ["hyprland/workspaces", "hyprland/submap", "custom/music", "gamemode"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "custom/bar", "custom/swapaudio", "pulseaudio", "network"],
     "hyprland/workspaces": {
@@ -84,7 +85,7 @@
         },
         "on-click": "[[ -z $(pgrep pavucontrol) ]] && pavucontrol -t 1 || kill $(pgrep pavucontrol)"
     },
-    "custom/spotify": {
+    "custom/music": {
         "format": "{}",
         "max-length": 100,
         "interval": 1, // Remove this if your script is endless and write in loop
