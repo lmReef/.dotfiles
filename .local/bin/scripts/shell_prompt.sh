@@ -3,8 +3,8 @@
 source ~/.cache/wal/colors.sh
 
 git_stuff() {
-    git_branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
-    git_status="$(git status -s)"
+    git_branch="$(git rev-parse --abbrev-ref HEAD &>/dev/null)"
+    git_status="$(git status -s &>/dev/null)"
     git_modified="$(echo "$git_status" | grep -c M)"
     git_untracked="$(echo "$git_status" | grep -c \?)"
     # git_stashed="$(git stash list | grep -c . 2>/dev/null)"

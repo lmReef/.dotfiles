@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cinfo="$(hyprctl --instance 0 clients)"
 
 # pid based focus

@@ -2,17 +2,14 @@
 # https://wiki.archlinux.org/title/Alacritty
 
 [window]
-padding = { x = 0, y = 1 }
 opacity = 0.95
 blur = true
 # hyprland client selector is case sensitive
 title = "alacritty"
 class = { instance = "alacritty", general = "alacritty" }
 
-[bell]
-animation = "Ease"
-duration = 1
-# command = "<string>" | { program = "<string>", args = ["<string>",] }
+[colors]
+transparent_background_colors = true
 
 [selection]
 save_to_clipboard = true
