@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/zsh
+
+selector="$(hyprctl --instance 0 clients | grep -E "\s+\w+: $1" -m1 | sed -E "s/\s+(\w+): .+/\1/")"
 
 # ignore="picture-in-picture"
 cinfo="$(hyprctl --instance 0 clients)"
