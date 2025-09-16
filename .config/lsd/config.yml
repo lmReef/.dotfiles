@@ -29,7 +29,7 @@ color:
   # When "classic" is set, this is set to "no-color".
   # Possible values: default, custom
   # When "custom" is set, lsd will look in the config directory for `colors.yaml`.
-  theme: default
+  theme: default # TODO: integrate with wal
 
 # == Date ==
 # This specifies the date format for the date column. The freeform format
@@ -54,7 +54,7 @@ icons:
   # When to use icons.
   # When "classic" is set, this is set to "never".
   # Possible values: always, auto, never
-  when: auto
+  when: never
   # Which icon theme to use.
   # Possible values: fancy, unicode
   theme: fancy
@@ -65,8 +65,9 @@ icons:
 # == Ignore Globs ==
 # A list of globs to ignore when listing.
 # ignore-globs:
-# - .git
-# - .github
+#   - .git
+#   - .github
+#   - .nf-test*
 
 # == Indicators ==
 # Whether to add indicator characters to certain listed files.

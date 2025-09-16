@@ -1,7 +1,7 @@
 function lst --wraps=ls\ -R\ --ignore=\'.git\' --description alias\ lst\ ls\ -R\ --ignore=\'.git\'
-    ls -R \
+    lsd --tree \
         -I .git \
         -I .github \
-        $argv
+        -I ".nf-test*"
 
 end
