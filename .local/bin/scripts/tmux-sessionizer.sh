@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 switch_to() {
     if [[ -z $TMUX ]]; then
@@ -9,7 +9,7 @@ switch_to() {
 }
 
 has_session() {
-    tmux list-sessions | grep -q "^$1:"
+    tmux ls | grep -q "^$1:"
 }
 
 hydrate() {
@@ -31,13 +31,13 @@ tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s "$selected_name" -c "$selected"
-    hydrate "$selected_name" "$selected"
+    # hydrate "$selected_name" "$selected"
     exit 0
 fi
 
 if ! has_session "$selected_name"; then
     tmux new-session -ds "$selected_name" -c "$selected"
-    hydrate "$selected_name" "$selected"
+    # hydrate "$selected_name" "$selected"
 fi
 
 switch_to "$selected_name"
