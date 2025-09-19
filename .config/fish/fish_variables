@@ -41,4 +41,3 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/reef\x2ematson/\x2elocal/bin\x1e/home/reef\x2ematson/\x2elocal/bin/scripts\x1e/home/reef\x2ematson/\x2elocal/bin/rtg\x2dtools\x1e/home/reef\x2ematson/\x2ecargo/bin\x1e/home/reef\x2ematson/\x2econfig/tempus\x2dapp\x2dmanager/bin\x1e/home/linuxbrew/\x2elinuxbrew/bin\x1e/home/linuxbrew/\x2elinuxbrew/sbin

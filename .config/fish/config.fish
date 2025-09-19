@@ -1,12 +1,12 @@
 if status is-interactive
-    fish_add_path \
+    set -a PATH \
         ~/.local/bin \
         ~/.local/bin/scripts \
-        ~/.local/bin/rtg-tools \
-        ~/.cargo/bin \
-        ~/.config/tempus-app-manager/bin
+        ~/.cargo/bin
 
-    /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+    if test -d /home/linuxbrew/
+        /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+    end
     mise activate fish | source
     zoxide init fish --cmd cd | source
     fzf --fish | source
