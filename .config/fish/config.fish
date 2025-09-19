@@ -4,9 +4,7 @@ if status is-interactive
         ~/.local/bin/scripts \
         ~/.cargo/bin
 
-    if test -d /home/linuxbrew/
-        /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
-    end
+    test -d /home/linuxbrew/ && /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
     mise activate fish | source
     zoxide init fish --cmd cd | source
     fzf --fish | source
