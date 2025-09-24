@@ -5,6 +5,8 @@ if status is-interactive
         ~/.dotfiles/scripts \
         ~/.cargo/bin
 
+    set -x EDITOR nvim
+
     test -d /home/linuxbrew/ && /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
     mise activate fish | source
     zoxide init fish --cmd cd | source
