@@ -1,5 +1,0 @@
-[settings]
-
-[env]
-MISE_ENV_FILE = ".env"
-MISE_FISH_AUTO_ACTIVATE = 1
