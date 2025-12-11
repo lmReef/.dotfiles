@@ -12,7 +12,7 @@ fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 
 zstyle ':completion:*' menu select
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
@@ -32,6 +32,7 @@ zstyle ':completion:*:kill:*' force-list always
 # custom PATH
 path+=("$HOME/.local/bin/scripts")
 path+=("$HOME/.local/bin")
+path+=("$HOME/.local/bin/rtg-tools/")
 path+=("$HOME/.cargo/bin")
 path+=("$HOME/.config/emacs/bin")
 path+=("$HOME/.config/tempus-app-manager/bin/")
@@ -43,7 +44,6 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 export WINE="/usr/bin/wine"
 export WINETRICKS="/usr/bin/winetricks"
-export dl_dir='/mnt/c/Users/reef.matson/Downloads'
 
 export FZF_DEFAULT_OPTS=""
 export FZF_CTRL_T_OPTS="
@@ -81,15 +81,18 @@ alias nvd="nvim ."
 alias h="help.sh"
 alias gls="gcloud storage ls"
 alias gcat="gcloud storage cat"
+alias gcp="gcloud storage cp"
+alias gmv="gcloud storage mv"
+alias grm="gcloud storage rm"
 alias po="poetry"
+alias cl="csvlens"
+alias tl="csvlens -t"
 
 # setup
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(fzf --zsh)"
 eval "$(mise activate zsh)"
-
-wal -qi "$HOME/Pictures/wallpaper.jpg"
 
 # custom prompt
 source ~/.dotfiles/.local/bin/scripts/shell_prompt.sh
@@ -99,6 +102,7 @@ if [ -f "$HOME/.antigenrc" ]; then
     source "$HOME/.antigenrc"
 fi
 
+wal -qR
 
 # tempus-developer: RC
 if [ -f "/home/reef.matson/.zshrc.tempus" ]; then
@@ -106,3 +110,9 @@ if [ -f "/home/reef.matson/.zshrc.tempus" ]; then
 else
     echo "Please re-run https://github.com/tempuslabs/tempus-developer/blob/main/RUN-ONCE.sh"
 fi
+
+if [ -e /home/reef.matson/.nix-profile/etc/profile.d/nix.sh ]; then . /home/reef.matson/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
